@@ -16,7 +16,6 @@
           <a href="../viewed_pass/index.php">已通過列表</a>
           <a href="../viewed_passNot/index.php">未通過列表</a>
           <a href="../../appear/index.php">顯示列表</a>
-          <a href="../delete/index.php">刪除列表</a>
     <?php
             //fetchall 所有資料 fetch 一筆資料
           foreach (($select -> fetchall(PDO::FETCH_ASSOC)) as  $result ) {?>

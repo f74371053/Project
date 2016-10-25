@@ -13,7 +13,6 @@
         $select -> execute();
         //fetchall 所有資料 fetch 一筆資料
         ?>
-        <a href="../delete/index.php">刪除列表</a>
         <a href="../unviewed/index.php">未審核列表</a>
         <a href="../viewed_pass/index.php">已通過列表</a>
         <a href="../viewed_passNot/index.php">未通過列表</a>

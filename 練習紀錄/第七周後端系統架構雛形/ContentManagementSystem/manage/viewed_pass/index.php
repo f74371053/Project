@@ -17,7 +17,6 @@
         <a href="../viewed_pass/index.php">已通過列表</a>
         <a href="../viewed_passNot/index.php">未通過列表</a>
         <a href="../../appear/index.php">顯示列表</a>
-        <a href="../delete/index.php">刪除列表</a>
         <?php
         foreach (($select -> fetchall(PDO::FETCH_ASSOC)) as $result ) {?>
           <table border="1">
@@ -43,7 +42,7 @@
                             </td></tr>
              <tr><td>管理:</td>
                         <td>
-                             <a href="../../appear/index.php?ID=<?php echo $result['ID'];?>">
+                             <a href="./passToAppear.php?ID=<?php echo $result['ID'];?>">
                                播放列表</a>
                              <a href="./passToNot.php?ID=<?php echo $result['ID'];?>">未通過</a>
                             </td></tr>

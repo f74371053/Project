@@ -8,8 +8,8 @@
 
     $result = $select -> fetch(PDO::FETCH_ASSOC);
 
-    if (file_exists("../../picture/".$result['fileName'])) {
-                unlink("../../picture/".$result['fileName']);
+    if (file_exists("../picture/".$result['fileName'])) {
+                unlink("../picture/".$result['fileName']);
                 $delete = $connect -> prepare("DELETE  FROM appear WHERE ID = :id");
                 $delete -> execute(array(':id' => $id));
                 header("location:./index.php");
