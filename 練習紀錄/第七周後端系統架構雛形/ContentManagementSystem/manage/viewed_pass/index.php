@@ -16,7 +16,7 @@
         <a href="../unviewed/index.php">未審核列表</a>
         <a href="../viewed_pass/index.php">已通過列表</a>
         <a href="../viewed_passNot/index.php">未通過列表</a>
-        <a href="../../appear/index.php">顯示列表</a>
+        <a href="../appear/index.php">顯示列表</a>
         <?php
         foreach (($select -> fetchall(PDO::FETCH_ASSOC)) as $result ) {?>
           <table border="1">
