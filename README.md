@@ -93,7 +93,7 @@ ContentManagementSystem/
  
 #### - index.php
 
-此頁面接收資料庫 manage 的資料表 unviewed 的資料
+此頁面接收資料庫 manage 的資料表 unviewed 的資料，管理員由此頁面進行初步審核。
 此頁面需求為:
  - 連線db:manage 取出unviewed的欄位
  - 檢視圖片或網址(超連結檢視)
@@ -103,11 +103,35 @@ ContentManagementSystem/
   
 #### - pass.php
 
-此頁面是抓取 index.php 傳來的ID 用$_GET['ID']接收
+此頁面是抓取 index.php 傳來的ID。用$_GET['ID']接收。
 
 此頁面需求為:
  - 抓取資料庫 manage 資料表 unviewed 的ID = $_GET['ID'] 的欄位
  - 將此來欄位傳進 資料庫 manage 的資料表 viewed_pass
  - 刪除資料庫 manage 資料表 unviewed 的ID = $_GET['ID'] 的欄位
  - 跳轉回 index.php
+ 
+#### - passNot.php
+
+此頁面是抓取 index.php 傳來的ID。用$_GET['ID']接收。
+
+此頁面需求為:
+ - 抓取資料庫 manage 資料表 unviewed 的ID = $_GET['ID'] 的欄位
+ - 將此來欄位傳進 資料庫 manage 的資料表 viewed_passNot
+ - 刪除資料庫 manage 資料表 unviewed 的ID = $_GET['ID'] 的欄位
+ - 跳轉回 index.php
+### viewed_pass/
+
+#### - index.php
+
+此頁面是抓取資料庫 manage 資料表 viewed_pass 的欄位，如果沒有審核錯誤將傳至播放時段分類，如果有審核錯誤可傳至viewed_passNot。
+
+此頁面需求為:
+  - 連線db:manage 資料表 viewed_pass
+  - 取出資料表 viewed_pass 中的欄位
+  - 審核通過:
+   - 將資料傳至 資料庫:appear 資料表:'依欄位[appearTime]的時間分類'
+  - 審核不通過:
+   - 將資料傳至 資料庫:manage 資料表:viewed_passNot
+
 
