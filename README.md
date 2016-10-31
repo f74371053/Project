@@ -89,22 +89,25 @@ ContentManagementSystem/
   
 ## Manage/
 ----------
-### unviewed/index.php
+### unviewed/
+ 
+#### - index.php
 
-   此頁面接收資料庫 manage 的資料表 unviewed 的資料
-   此頁面需求為:  
-  - 連線db:manage 取出unviewed的欄位
-  - 檢視圖片或網址(超連結檢視)
-  - 合格送至 viewed_pass 資料表
-  - 不合格送至 viewed_passNot 資料表
-  - 取的欄位ID進行分派資料工作(pass.php、passNot.php)
+此頁面接收資料庫 manage 的資料表 unviewed 的資料
+此頁面需求為:
+ - 連線db:manage 取出unviewed的欄位
+ - 檢視圖片或網址(超連結檢視)
+ - 合格送至 viewed_pass 資料表 
+ - 不合格送至 viewed_passNot 資料表
+ - 取的欄位ID進行分派資料工作(pass.php、passNot.php)
   
-### unviewed/pass.php
+#### - pass.php
 
-   此頁面是抓取 index.php 傳來的ID 用$_GET['ID']接收
-   此頁面需求為:
-  - 抓取資料庫 manage 資料表 unviewed 的ID = $_GET['ID'] 的欄位
-  - 將此來欄位傳進 資料庫 manage 的資料表 viewed_pass
-  - 刪除資料庫 manage 資料表 unviewed 的ID = $_GET['ID'] 的欄位
-  - 跳轉回 index.php
+此頁面是抓取 index.php 傳來的ID 用$_GET['ID']接收
+
+此頁面需求為:
+ - 抓取資料庫 manage 資料表 unviewed 的ID = $_GET['ID'] 的欄位
+ - 將此來欄位傳進 資料庫 manage 的資料表 viewed_pass
+ - 刪除資料庫 manage 資料表 unviewed 的ID = $_GET['ID'] 的欄位
+ - 跳轉回 index.php
 
