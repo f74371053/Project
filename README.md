@@ -72,3 +72,14 @@ ContentManagementSystem/
     - 如果沒有影片及圖片不得上傳
     - 檢查檔案格式(jpg、png)
 
+### add.php
+  將index.php 的表單傳進資料庫 manage 的資料表 unviewed。  
+  此頁面需求:
+  
+ - 接收表單變數
+  - $_POST['webSite']    網址
+  - $_POST['fileName']   檔名
+  - $_POST['startDate']  開始日期  
+  - $_POST['endDate']    結束日期  
+  - $_POST['appearTime'] 呈現時段
+
