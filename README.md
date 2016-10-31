@@ -71,6 +71,86 @@ ContentManagementSystem/
     - 結束時間不能早於開始時間(ex:開始時間 10/31,結束時間 10/21)
     - 如果沒有影片及圖片不得上傳
     - 檢查檔案格式(jpg、png)
+```php
+<!DOCTYPE html>
+<html>
+  <head>
+    <?php include("../method/script/dateTime.html");?>
+    <script>//時段細節設定
+     $( function() {
+        $( "#startDate" ).datepicker();
+        $( "#endDate" ).datepicker();
+        $("#appearTime").timepicker({
+              timeFormat: 'H:mm',//24小時
+              minTime:'09',
+               interval: 60,
+               dynamic: false,
+              maxTime:'6:00pm',
+              startTime:'09:00',
+              defaultTime:'09'
+           });
+        } );
+    </script>
+    <script type="text/javascript">//上傳檢查
+      function check() {
+             var startDate = add.startDate.value;
+             var endDate = add.endDate.value;
+             var webSite = add.webSite.value;
+                       if ($('[name = file]').val() == "" && webSite == "" ) {
+               //  $('[name = file ]').val() ==''    JQuery　打法
+                        alert("沒有上傳任何東西");
+            }else if (startDate =="" ||  endDate == "") {
+                                  alert("沒有填日期");
+                                }
+             else if(startDate > endDate){
+                                  alert('開始時間: '+startDate+'  結束時間:'+endDate+' 時間錯誤');
+            }else {
+                 add.submit();
+           }
+      }
+      // if ($('[name = file]').val() =='' ) {
+      //   //  $('[name = file ]').val() ==''    JQuery　打法
+      //            alert("沒有上傳任何東西");
+      //      }
+    </script>
+    <meta charset="utf-8">
+    <title>主頁</title>
+  </head>
+  <body>
+    <form name="add" action="./add.php" method="post" enctype="multipart/form-data">
+      <table>
+        <tr>
+         <td>網址:</td>
+         <td><input type="text" name="webSite">
+         </td></tr>
+        <tr>
+          <td>圖片:</td>
+          <td><input type="file" name="file">
+          </td></tr>
+        <tr>
+         <td>開始日期:</td>
+         <td>
+           <input type="text" id="startDate" name="startDate">
+         </td></tr>
+        <tr>
+          <td>結束時間:</td>
+          <td>
+            <input type="text" id="endDate" name="endDate">
+          </td></tr>
+        <tr>
+          <td>選擇時段:</td>
+          <td>
+            <input type="text" name="appearTime" id="appearTime">
+          </td></tr>
+        <tr>
+          <td>
+           <input type="button"  value="送出" onclick="check()">
+        </td> </tr>
+      </table>
+    </form>
+  </body>
+</html>
+```
 
 ### add.php
   將index.php 的表單傳進資料庫 manage 的資料表 unviewed。  
@@ -82,4 +162,42 @@ ContentManagementSystem/
   - $_POST['startDate']  開始日期  
   - $_POST['endDate']    結束日期  
   - $_POST['appearTime'] 呈現時段
+  
+  
+```php
+   <?php
+      ini_set("display_errors",'On');
+      $webSite   = $_POST["webSite"];
+      $fileName  = $_FILES['file']['name'];
+      //檔案記得表單需加(enctype='multipart/form-data')
+      $startDate = $_POST["startDate"];
+      $endDate =   $_POST["endDate"];
+      $appearTime = $_POST["appearTime"];
+      if($_FILES["file"]["error"]==0){
+          move_uploaded_file($_FILES["file"]["tmp_name"],
+          iconv("UTF-8", "big5", "../picture/".$_FILES["file"]["name"] ));//防止中文檔名亂碼
+      }else {
+          echo"fileErrorCode:".$_FILES["file"]["error"];
+      }
+      include("../method/connectManage.php");
+      $insert = $connectManage -> prepare( "INSERT INTO
+                          unviewed (
+                                  webSite,
+                                  fileName,
+                                  startDate,
+                                  endDate,
+                                  appearTime
+                                ) VALUES (
+                                  ?,?,?,?,?
+                                )");
+      $insert -> execute(
+              array( $webSite,
+                           $fileName,
+                           $startDate,
+                           $endDate,
+                           $appearTime
+                         ));
+      header("location:http://localhost/ContentManagementSystem/manage/unviewed/index.php");
+ ?>
+```
 
