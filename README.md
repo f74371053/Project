@@ -13,13 +13,14 @@ ContentManagementSystem/
 - 1.使用者:使用者上傳海報、影片及填寫想呈現的時段、選擇何時開始何時結束。
   - 1.1 User/
   -----------
-    - 1.1.1 User/index.php
-    - 1.1.2 User/add.php
+    - index.php
+    - add.php
 
 - 2.管理者:管理者要審核使用者上傳的物件，將可以播放的物件放進播放清單，並可隨時管理播放內容，不適播放的物件可以刪除。審核完後須通知使用者是否上傳成功，並通知日期或不通過原因。
   -	 Manage/
   ----------------
      -  unviewed/
+     
         - index.php
         - pass.php
         - passNot.php
@@ -52,4 +53,22 @@ ContentManagementSystem/
       - dateTime.html
     - connectManage.php
     - connectAppear.php
+    
+###基本上所有的操作都會在ContentManagementSystem/ 的資料夾內運行，如將接收表單、傳上資料庫、管理員審核分類...等等。
+
+## ContentManagementSystem/
+-----------------------------------------------
+###User/index.php
+ 此介面有幾項需求:
+ 
+ - 填入影片網址或上傳海報(圖片)
+ 
+ - 選擇播放開始時間及結束播放時間
+   * 使用javaScript插件  
+ - 選擇呈現的時段(ex: 09:00)
+   * 使用javaScript插件
+ - 防呆機制
+    - 結束時間不能早於開始時間(ex:開始時間 10/31,結束時間 10/21)
+    - 如果沒有影片及圖片不得上傳
+    - 檢查檔案格式(jpg、png)
 
