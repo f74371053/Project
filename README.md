@@ -120,6 +120,7 @@ ContentManagementSystem/
  - 將此來欄位傳進 資料庫 manage 的資料表 viewed_passNot
  - 刪除資料庫 manage 資料表 unviewed 的ID = $_GET['ID'] 的欄位
  - 跳轉回 index.php
+ 
 ### viewed_pass/
 
 #### - index.php
