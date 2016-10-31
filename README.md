@@ -108,10 +108,6 @@ ContentManagementSystem/
                  add.submit();
            }
       }
-      // if ($('[name = file]').val() =='' ) {
-      //   //  $('[name = file ]').val() ==''    JQuery　打法
-      //            alert("沒有上傳任何東西");
-      //      }
     </script>
     <meta charset="utf-8">
     <title>主頁</title>
