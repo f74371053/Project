@@ -128,11 +128,27 @@ ContentManagementSystem/
 此頁面是抓取資料庫 manage 資料表 viewed_pass 的欄位，如果沒有審核錯誤將傳至播放時段分類，如果有審核錯誤可傳至viewed_passNot。
 
 此頁面需求為:
+
   - 連線db:manage 資料表 viewed_pass
   - 取出資料表 viewed_pass 中的欄位
   - 審核通過:
-   - 將資料傳至 資料庫:appear 資料表:'依欄位[appearTime]的時間分類'
+   - 抓取資料庫 manage 資料表 viewed_pass 的ID = $_GET['ID']
+   - 將資料與ID傳至 資料庫:appear 資料表:'依欄位[appearTime]的時間分類'
   - 審核不通過:
-   - 將資料傳至 資料庫:manage 資料表:viewed_passNot
+   - 抓取資料庫 manage 資料表 viewed_pass 的ID = $_GET['ID']
+   - 將資料與ID傳至 資料庫:manage 資料表:viewed_passNot
 
+#### - passToAppear.php
 
+此頁面是抓取index.php所傳來的 $_GET['ID']，抓取資料庫 manage 資料表viewed_pass 的ID = $_GET['ID']的欄位，取的欄位['appearTime']分類進儲存各時段的資料表。 
+
+此頁面需求為:
+
+  - 連線db:manage talbe:viewed_pass
+  - 抓取id= $_GET['ID']的欄位 並取出欄位:['appearTime']
+  - 創立時段陣列[0900~1800]、及資料表名稱[time_9~time_18]
+  - 連線db:appear
+  - 假設欄位:['appearTime'] == [0900~1800] 就送到 db:appear table:[time_9~time_18]
+  - 送入後關閉連線 db:appear
+  - 刪除db:manage table:viewed_pass ,id= $_GET['ID']的欄位
+  - 跳轉回index.php
