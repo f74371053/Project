@@ -58,7 +58,8 @@ ContentManagementSystem/
 
 ## ContentManagementSystem/
 -----------------------------------------------
-###User/index.php
+## User/
+###index.php
  此介面有幾項需求:
  
  - 填入影片網址或上傳海報(圖片)
@@ -83,7 +84,18 @@ ContentManagementSystem/
   - $_POST['startDate']  開始日期  
   - $_POST['endDate']    結束日期  
   - $_POST['appearTime'] 呈現時段
+ - 傳至資料庫 manage 的資料表 unviewed等待管理員審核
   
   
-
+## manage/
+----------
+### unviewed/index.php
+   此頁面接收資料庫 manage 的資料表 unviewed 的資料
+   此頁面需求為:  
+  - 連線db:manage 取出unviewed的欄位
+  - 檢視圖片或網址(超連結檢視)
+  - 合格送至 viewed_pass 資料表
+  - 不合格送至 viewed_passNot 資料表
+  - 取的欄位ID進行分派資料工作
+    
 
