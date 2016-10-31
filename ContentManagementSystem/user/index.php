@@ -7,7 +7,7 @@
         $( "#startDate" ).datepicker();
         $( "#endDate" ).datepicker();
         $("#appearTime").timepicker({
-              timeFormat: 'H:mm',
+              timeFormat: 'H:mm',//24小時
               minTime:'09',
                interval: 60,
                dynamic: false,
@@ -43,7 +43,7 @@
     <title>主頁</title>
   </head>
   <body>
-    <form name="add" action="../method/add.php" method="post" enctype="multipart/form-data">
+    <form name="add" action="./add.php" method="post" enctype="multipart/form-data">
       <table>
         <tr>
          <td>網址:</td>
