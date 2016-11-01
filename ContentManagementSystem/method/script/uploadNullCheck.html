@@ -1,0 +1,22 @@
+<script type="text/javascript">//上傳檢查
+  function check() {
+         var startDate = add.startDate.value;
+         var endDate = add.endDate.value;
+         var webSite = add.webSite.value;
+                   if ($('[name = file]').val() == "" && webSite == "" ) {
+           //  $('[name = file ]').val() ==''    JQuery　打法
+                    alert("沒有上傳任何東西");
+        }else if (startDate =="" ||  endDate == "") {
+                              alert("沒有填日期");
+                            }
+         else if(startDate > endDate){
+                              alert('開始時間: '+startDate+'  結束時間:'+endDate+' 時間錯誤');
+        }else {
+             add.submit();
+       }
+  }
+  // if ($('[name = file]').val() =='' ) {
+  //   //  $('[name = file ]').val() ==''    JQuery　打法
+  //            alert("沒有上傳任何東西");
+  //      }
+</script>

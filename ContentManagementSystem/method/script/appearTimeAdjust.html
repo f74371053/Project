@@ -1,0 +1,15 @@
+<script>//時段細節設定
+ $( function() {
+    $( "#startDate" ).datepicker();
+    $( "#endDate" ).datepicker();
+    $("#appearTime").timepicker({
+          timeFormat: 'H:mm',//24小時
+          minTime:'09',
+           interval: 60,
+           dynamic: false,
+          maxTime:'6:00pm',
+          startTime:'09:00',
+          defaultTime:'09'
+       });
+    } );
+</script>
