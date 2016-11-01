@@ -211,4 +211,11 @@ ContentManagementSystem/
  - 顯示播放日期包含於今天的播放列表(ex:10/21~10/31,今日10/29)
  - 假設有問題可下架某播放物件
  - 下架:連結->取得欄位ID傳至move.php
+ 
 #### - move.php
+此頁面是抓取index.php所傳的值$_GET['ID'],抓取 db:appear table:[time_9~time_18] 的ID = $_GET['ID'] 的欄位,將此欄位刪除
+此頁面需求為:
+  - 連線db:appear;table:[time_9~time_18]
+  - 抓取 ['ID']= $_GET['ID'] 的欄位 
+  - 刪除db:appear;table:[time_9~time_18],['ID']= $_GET['ID']的欄位
+  - 跳轉回index.php
